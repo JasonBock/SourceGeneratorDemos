@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="InlineMapping" Version="1.0.0" />
+    <PackageReference Include="PartiallyApplied" Version="1.0.0" />
+    <PackageReference Include="Rocks" Version="5.1.0" />
+  </ItemGroup>
+</Project>

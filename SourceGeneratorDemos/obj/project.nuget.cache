@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "dgSpecHash": "WXR0Kawd90OzA3fny3ey5gfgXa5GrjWg093uDm/u2ByWRIkAxp7WQ+FLrZikey7oDcOgNbKz8QTtN30W3fcyEA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\jason\\source\\repos\\SourceGeneratorDemos\\SourceGeneratorDemos\\SourceGeneratorDemos.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jason\\.nuget\\packages\\inlinemapping\\1.0.0\\inlinemapping.1.0.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\microsoft.codeanalysis.common\\3.8.0\\microsoft.codeanalysis.common.3.8.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\microsoft.codeanalysis.csharp\\3.8.0\\microsoft.codeanalysis.csharp.3.8.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\partiallyapplied\\1.0.0\\partiallyapplied.1.0.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\rocks\\5.1.0\\rocks.5.1.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.reflection.metadata\\5.0.0\\system.reflection.metadata.5.0.0.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.7.1\\system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
+    "C:\\Users\\jason\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+  ],
+  "logs": []
+}
