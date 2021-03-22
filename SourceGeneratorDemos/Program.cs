@@ -5,9 +5,9 @@ using Rocks;
 using RocksDemo;
 using System;
 
-//DemoInlineMapping();
+DemoInlineMapping();
 //DemoPartiallyApplied();
-DemoRocks();
+//DemoRocks();
 
 static void DemoInlineMapping() 
 {
@@ -26,11 +26,16 @@ static void DemoInlineMapping()
 static void DemoPartiallyApplied() 
 {
 	var incrementBy3 = Partially.Apply(Maths.Add, 3);
-	Console.Out.WriteLine(incrementBy3(4));
+	Console.Out.WriteLine($"incrementBy3(4) is {incrementBy3(4)}");
 
 	var functions = new Functions();
 	var triple = Partially.Apply(functions.Multiply, 3);
-	Console.Out.WriteLine(triple(4));
+	Console.Out.WriteLine($"triple(4) is {triple(4)}");
+
+	var addWith3 = Partially.ApplyWithOptionals(Maths.AddOptionals, 3);
+	Console.Out.WriteLine($"addWith3() is {addWith3()}");
+	Console.Out.WriteLine($"addWith3(10) is {addWith3(10)}");
+	Console.Out.WriteLine($"addWith3(10, 20) is {addWith3(10, 20)}");
 }
 
 static void DemoRocks() 
@@ -40,12 +45,13 @@ static void DemoRocks()
 
 	var rock = Rock.Create<ICustomerRepository>();
 
-	rock.Methods().Get(id).Returns(customer);
+	rock.Properties().Getters().Id().Returns(id);
+	rock.Methods().Retrieve(id).Returns(customer);
 
 	var chunk = rock.Instance();
 
 	var retriever = new CustomerRetriever(chunk);
-	var retrievedCustomer = retriever.Get(id + 1);
+	var retrievedCustomer = retriever.Get(chunk.Id);
 
 	Console.Out.WriteLine(retrievedCustomer);
 
@@ -76,6 +82,7 @@ namespace PartiallyAppliedDemo
 	public static class Maths
 	{
 		public static int Add(int a, int b) => a + b;
+		public static int AddOptionals(int a = 3, int b = 4, int c = 5) => a + b + c;
 	}
 
 	public class Functions
@@ -91,7 +98,7 @@ namespace RocksDemo
 	public interface ICustomerRepository
 	{
 		int Id { get; }
-		Customer Get(int id);
+		Customer Retrieve(int id);
 		void Delete(int id);
 	}
 
@@ -103,6 +110,6 @@ namespace RocksDemo
 			this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
 
 		public Customer Get(int id) =>
-			this.repository.Get(id);
+			this.repository.Retrieve(id);
 	}
 }
