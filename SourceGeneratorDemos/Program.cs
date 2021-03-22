@@ -27,6 +27,10 @@ static void DemoPartiallyApplied()
 {
 	var incrementBy3 = Partially.Apply(Maths.Add, 3);
 	Console.Out.WriteLine(incrementBy3(4));
+
+	var functions = new Functions();
+	var triple = Partially.Apply(functions.Multiply, 3);
+	Console.Out.WriteLine(triple(4));
 }
 
 static void DemoRocks() 
@@ -35,12 +39,13 @@ static void DemoRocks()
 	var customer = new Customer(id, "Jason", 29);
 
 	var rock = Rock.Create<ICustomerRepository>();
+
 	rock.Methods().Get(id).Returns(customer);
 
 	var chunk = rock.Instance();
 
 	var retriever = new CustomerRetriever(chunk);
-	var retrievedCustomer = retriever.Get(id);
+	var retrievedCustomer = retriever.Get(id + 1);
 
 	Console.Out.WriteLine(retrievedCustomer);
 
@@ -71,6 +76,11 @@ namespace PartiallyAppliedDemo
 	public static class Maths
 	{
 		public static int Add(int a, int b) => a + b;
+	}
+
+	public class Functions
+	{
+		public int Multiply(int a, int b) => a * b;
 	}
 }
 
