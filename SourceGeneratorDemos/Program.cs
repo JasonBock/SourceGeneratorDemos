@@ -17,6 +17,7 @@ static void DemoInlineMapping()
 		Name = "Jason",
 		When = DateTime.Now
 	};
+
 	Console.Out.WriteLine($"{source.Id}, {source.Name}, {source.When}");
 
 	var destination = source.MapToDestination();
@@ -44,14 +45,12 @@ static void DemoRocks()
 	var customer = new Customer(id, "Jason", 29);
 
 	var rock = Rock.Create<ICustomerRepository>();
-
-	rock.Properties().Getters().Id().Returns(id);
+	//rock.Properties().Getters().Id().Returns(id);
 	rock.Methods().Retrieve(id).Returns(customer);
-
 	var chunk = rock.Instance();
 
 	var retriever = new CustomerRetriever(chunk);
-	var retrievedCustomer = retriever.Get(chunk.Id);
+	var retrievedCustomer = retriever.Get(3);
 
 	Console.Out.WriteLine(retrievedCustomer);
 
