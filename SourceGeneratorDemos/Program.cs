@@ -6,23 +6,26 @@ using RocksDemo;
 using System;
 
 DemoInlineMapping();
-//DemoPartiallyApplied();
-//DemoRocks();
 
 static void DemoInlineMapping() 
 {
-	var source = new Source
+	var source = new PersonData
 	{
 		Id = Guid.NewGuid(),
 		Name = "Jason",
 		When = DateTime.Now
 	};
 
-	Console.Out.WriteLine($"{source.Id}, {source.Name}, {source.When}");
+	Console.Out.WriteLine(
+		$"{source.Id}, {source.Name}, {source.When}");
 
-	var destination = source.MapToDestination();
-	Console.Out.WriteLine($"{destination.Id}, {destination.Name}, {destination.When}, {destination.Reason}");
+	var destination = source.MapToPerson();
+
+	Console.Out.WriteLine(
+		$"{destination.Id}, {destination.Name}, {destination.When}, {destination.Reason}");
 }
+
+//DemoPartiallyApplied();
 
 static void DemoPartiallyApplied() 
 {
@@ -39,35 +42,37 @@ static void DemoPartiallyApplied()
 	Console.Out.WriteLine($"addWith3(10, 20) is {addWith3(10, 20)}");
 }
 
+//DemoRocks();
+
 static void DemoRocks() 
 {
 	var id = 3;
 	var customer = new Customer(id, "Jason", 29);
 
-	var rock = Rock.Create<ICustomerRepository>();
-	//rock.Properties().Getters().Id().Returns(id);
-	rock.Methods().Retrieve(id).Returns(customer);
-	var chunk = rock.Instance();
+	var expectations = Rock.Create<ICustomerRepository>();
+	//expectations.Properties().Getters().Id().Returns(id);
+	expectations.Methods().Retrieve(id).Returns(customer);
+	var mock = expectations.Instance();
 
-	var retriever = new CustomerRetriever(chunk);
+	var retriever = new CustomerRetriever(mock);
 	var retrievedCustomer = retriever.Get(3);
 
 	Console.Out.WriteLine(retrievedCustomer);
 
-	rock.Verify();
+	expectations.Verify();
 }
 
 namespace InlineMappingDemo
 {
-	[MapTo(typeof(Destination))]
-	public class Source
+	[MapTo(typeof(Person))]
+	public class PersonData
 	{
 		public Guid Id { get; set; }
 		public string? Name { get; set; }
 		public DateTime When { get; set; }
 	}
 
-	public class Destination
+	public class Person
 	{
 		public Guid Id { get; set; }
 		public string? Name { get; set; }

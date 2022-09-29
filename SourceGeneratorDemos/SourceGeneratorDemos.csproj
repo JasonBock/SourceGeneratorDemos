@@ -15,6 +15,6 @@
 	<ItemGroup>
 		<PackageReference Include="InlineMapping" Version="2.0.0" />
 		<PackageReference Include="PartiallyApplied" Version="1.2.1" />
-		<PackageReference Include="Rocks" Version="6.4.3" />
+		<PackageReference Include="Rocks" Version="6.4.5" />
 	</ItemGroup>
 </Project>
