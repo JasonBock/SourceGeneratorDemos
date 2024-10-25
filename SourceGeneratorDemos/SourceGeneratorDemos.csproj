@@ -13,6 +13,7 @@
 		-->
 	</PropertyGroup>
 	<ItemGroup>
+		<PackageReference Include="AutoDeconstruct" Version="0.2.0" />
 		<PackageReference Include="InlineMapping" Version="2.0.0" />
 		<PackageReference Include="PartiallyApplied" Version="1.2.1" />
 		<PackageReference Include="Rocks" Version="6.4.5" />

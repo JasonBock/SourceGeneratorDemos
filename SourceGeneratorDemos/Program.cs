@@ -5,7 +5,7 @@ using Rocks;
 using RocksDemo;
 using System;
 
-DemoInlineMapping();
+//DemoInlineMapping();
 
 static void DemoInlineMapping() 
 {
@@ -13,7 +13,7 @@ static void DemoInlineMapping()
 	{
 		Id = Guid.NewGuid(),
 		Name = "Jason",
-		When = DateTime.Now
+		When = DateTime.UtcNow
 	};
 
 	Console.Out.WriteLine(
@@ -23,6 +23,17 @@ static void DemoInlineMapping()
 
 	Console.Out.WriteLine(
 		$"{destination.Id}, {destination.Name}, {destination.When}, {destination.Reason}");
+}
+
+//DemoAutoDeconstruct();
+
+static void DemoAutoDeconstruct()
+{
+	var destination = new Person() { Id = Guid.NewGuid(), Name = "Jason", When = DateTime.UtcNow };
+	Console.WriteLine(destination.Id);
+
+	(var id, var name, var when, var reason) = destination;
+	Console.WriteLine(id);
 }
 
 //DemoPartiallyApplied();
@@ -42,7 +53,7 @@ static void DemoPartiallyApplied()
 	Console.Out.WriteLine($"addWith3(10, 20) is {addWith3(10, 20)}");
 }
 
-//DemoRocks();
+DemoRocks();
 
 static void DemoRocks() 
 {
@@ -50,7 +61,7 @@ static void DemoRocks()
 	var customer = new Customer(id, "Jason", 29);
 
 	var expectations = Rock.Create<ICustomerRepository>();
-	//expectations.Properties().Getters().Id().Returns(id);
+	expectations.Properties().Getters().Id().Returns(id);
 	expectations.Methods().Retrieve(id).Returns(customer);
 	var mock = expectations.Instance();
 
