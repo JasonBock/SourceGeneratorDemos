@@ -4,7 +4,7 @@
 		<LangVersion>latest</LangVersion>
 		<Nullable>enable</Nullable>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<!-- If you want to save generated code, add these in. -->
 		<!--
@@ -13,9 +13,8 @@
 		-->
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="AutoDeconstruct" Version="0.2.0" />
+		<PackageReference Include="AutoDeconstruct" Version="1.0.0" />
 		<PackageReference Include="InlineMapping" Version="2.0.0" />
-		<PackageReference Include="PartiallyApplied" Version="1.2.1" />
-		<PackageReference Include="Rocks" Version="6.4.5" />
+		<PackageReference Include="Rocks" Version="8.3.1" />
 	</ItemGroup>
 </Project>
